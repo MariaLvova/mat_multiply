@@ -49,3 +49,20 @@ void mat_unit(MAT* mat) {
         }
     }
 }
+
+// Uloženie matice do binárneho súboru
+char mat_save(MAT* mat, char* filename) {
+    FILE* file = fopen(filename, "wb");
+    if (!file) return 0;
+
+    if (fwrite("M1", sizeof(char), 2, file) != 2 ||
+        fwrite(&mat->rows, sizeof(unsigned int), 1, file) != 1 ||
+        fwrite(&mat->cols, sizeof(unsigned int), 1, file) != 1 ||
+        fwrite(mat->elem, sizeof(int), mat->rows * mat->cols, file) != mat->rows * mat->cols) {
+        fclose(file);
+        return 0;
+    }
+
+    fclose(file);
+    return 1;
+}
