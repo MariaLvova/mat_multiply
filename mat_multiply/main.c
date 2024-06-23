@@ -84,3 +84,24 @@ void mat_print(MAT* mat) {
         printf("\n");
     }
 }
+
+// Násobenie matíc A a B a výsledok uloženie do matice C
+char mat_multiply(MAT* a, MAT* b, MAT* c) {
+    // Kontrola rozmierov matíc
+    if (a->cols != b->rows || c->rows != a->rows || c->cols != b->cols) {
+        return 0; // Nekompatibilné rozmery matíc
+    }
+
+    // Výpočet súčinu matíc A a B a uloženie do matice C
+    for (unsigned int i = 0; i < a->rows; i++) {
+        for (unsigned int j = 0; j < b->cols; j++) {
+            int sum = 0;
+            for (unsigned int k = 0; k < a->cols; k++) {
+                sum += ELEM(a, i, k) * ELEM(b, k, j);
+            }
+            ELEM(c, i, j) = sum;
+        }
+    }
+
+    return 1; // Úspešné vypočítanie súčinu matíc
+}
