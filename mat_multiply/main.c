@@ -40,3 +40,12 @@ void mat_random(MAT* mat) {
         }
     }
 }
+
+// Inicializácia jednotkovej matice
+void mat_unit(MAT* mat) {
+    for (unsigned int i = 0; i < mat->rows; i++) {
+        for (unsigned int j = 0; j < mat->cols; j++) {
+            ELEM(mat, i, j) = (i == j) ? 1 : 0;
+        }
+    }
+}
