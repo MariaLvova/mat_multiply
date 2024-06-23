@@ -105,3 +105,38 @@ char mat_multiply(MAT* a, MAT* b, MAT* c) {
 
     return 1; // Úspešné vypočítanie súčinu matíc
 }
+
+int main() {
+    // Inicializácia generátora náhodných čísel
+    srand(time(NULL));
+
+    // Vytvorenie matice A
+    MAT* A = mat_create_with_type(3, 3);
+    printf("Matrix A:\n");
+    mat_print(A);
+
+    // Vytvorenie matice B
+    MAT* B = mat_create_with_type(3, 3);
+    //mat_unit(B); // Jednotková matica pre jednoduchosť, môže byť náhodná ako A
+    printf("\nMatrix B:\n");
+    mat_print(B);
+
+    // Vytvorenie matice C pre výsledok súčinu
+    MAT* C = mat_create_with_type(3, 3);
+
+    // Vypočítanie súčinu matíc A a B
+    if (mat_multiply(A, B, C)) {
+        printf("\nResult matrix C = A * B:\n");
+        mat_print(C);
+    }
+    else {
+        printf("Multiplication failed due to incompatible matrix dimensions.\n");
+    }
+
+    // Uvoľnenie pamäte matíc
+    mat_destroy(A);
+    mat_destroy(B);
+    mat_destroy(C);
+
+    return 0;
+}
