@@ -31,3 +31,12 @@ MAT* mat_create_with_type(unsigned int rows, unsigned int cols) {
     }
     return mat;
 }
+
+// Inicializácia matice náhodnými číslami
+void mat_random(MAT* mat) {
+    for (unsigned int i = 0; i < mat->rows; i++) {
+        for (unsigned int j = 0; j < mat->cols; j++) {
+            ELEM(mat, i, j) = rand() % 10; // Náhodné čísla od 0 do 9 (môžete upraviť rozsah podľa potreby)
+        }
+    }
+}
