@@ -75,3 +75,12 @@ void mat_destroy(MAT* mat) {
     }
 }
 
+// Výpis matice na obrazovku
+void mat_print(MAT* mat) {
+    for (unsigned int i = 0; i < mat->rows; i++) {
+        for (unsigned int j = 0; j < mat->cols; j++) {
+            printf("%4d ", ELEM(mat, i, j));
+        }
+        printf("\n");
+    }
+}
