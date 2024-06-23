@@ -66,3 +66,12 @@ char mat_save(MAT* mat, char* filename) {
     fclose(file);
     return 1;
 }
+
+// Uvoľnenie pamäte matice
+void mat_destroy(MAT* mat) {
+    if (mat) {
+        free(mat->elem);
+        free(mat);
+    }
+}
+
